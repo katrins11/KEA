@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <div class="">
+      <input type="text" placeholder="Add Item" id="txtAddItem">
+      <button id="btnAddProduct">Add Product</button>
+      <button id="btnSaveToLocalStorage">Save Data to LocalStorage</button>
+      <button id="btnClearLoacalStorage">Clear LocalStorage</button>
+    </div>
+
+    <script type="text/javascript">
+      /*Code to add as many item's as you want to the list, save to the localStorage and clear the localStorage*/
+
+      var btnAddProduct = document.querySelector("#btnAddProduct");
+      var btnSaveToLocalStorage = document.querySelector("#btnSaveToLocalStorage");
+      var btnClearLoacalStorage = document.querySelector("#btnClearLoacalStorage");
+      var txtAddItem = document.querySelector("#txtAddItem");
+      var aAllItems = [];
+      var sAddProductName = "";
+      var sSaveDataToStorage = "";
+
+      btnAddProduct.addEventListener("click", function(){
+        sAddProductName = txtAddItem.value;
+        aAllItems.push([sAddProductName]);
+        console.log(aAllItems);
+      });
+
+      btnSaveToLocalStorage.addEventListener("click", function(){
+        sSaveDataToStorage = JSON.stringify(aAllItems);
+        localStorage.sSaveDataToStorage = sSaveDataToStorage ;
+      });
+
+      btnClearLoacalStorage.addEventListener("click", function(){
+        localStorage.clear();
+      });
+
+    </script>
+  </body>
+</html>

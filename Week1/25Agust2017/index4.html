@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+    *{
+      margin: 0;
+      padding: 0;
+    }
+      #pageMainMenu, #pageAddToMenu{
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        color: white;
+        font-size: 50px;
+      }
+      #pageMainMenu{
+        display: flex;
+        background-color: purple;
+        z-index: 1;
+      }
+      #pageAddToMenu{
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <!--
+    Project Description:
+    2 pages that you can go between(Main Menu and Add To Menu).
+    On Add To Menu, you can add to the list and inserted into Local Storage.
+    On Main Menu, you can see the list, delete from it (both from the screen, from the array and the Local Storage).
+    -->
+    <button type="button" class="btnShowPage" data-showThisPage="pageMainMenu">Main Menu</button>
+    <button type="button" class="btnShowPage" data-showThisPage="pageAddToMenu">Add Product</button>
+
+    <div class="page" id="pageMainMenu">
+      Main Menu!
+    </div>
+    <div class="page" id="pageAddToMenu">
+        Add To Menu!
+        <input type="text" id="txtProductName" placeholder="Enter Product!">
+        <button id="btnAddProduct">Add Product</button>
+    </div>
+
+    <script>
+      /*Go between Pages*/
+      var aBtnShowPages = document.getElementsByClassName("btnShowPage");
+      for (var i = 0; i < aBtnShowPages.length; i++) {
+        // console.log("X");
+        aBtnShowPages[i].addEventListener("click", function(){
+          var aPages = document.getElementsByClassName("page");
+          for (var j = 0; j < aPages.length; j++) {
+            aPages[j].style.display = "none";
+          }
+          var sDataAttibute = this.getAttribute("data-showThisPage");
+
+          // var message = "You are on: " + sDataAttibute;
+          // console.log(message);
+          document.getElementById(sDataAttibute).style.display = "flex";
+        });
+      }
+
+      var btnAddProduct = document.querySelector("#btnAddProduct");
+      var txtProductName = document.querySelector("#txtProductName");
+      var theListToMainMenu = document.querySelector("#pageMainMenu");
+      var btnRemove = document.getElementsByClassName("btnRemove");
+      var aProducts = [];
+      var iCounter = 0;
+      var sProductName = "";
+      var sSaveDataToStorage = "";
+      var sDivProduct = "";
+      btnAddProduct.addEventListener("click", function(){
+        iCounter += 1;
+        sProductName = txtProductName.value;
+
+        //aProducts.push([iCounter, sProductName]);
+        aProducts.push(sProductName);
+        // console.log( aProducts );
+
+        //Add to localStorage
+        sSaveDataToStorage = JSON.stringify(aProducts);
+        localStorage.sSaveDataToStorage = sSaveDataToStorage;
+
+        //Show In Main Menu
+        theListToMainMenu.innerHTML = "";
+        for(var i = 0 ; i < aProducts.length ; i++){
+          sDivProduct = "<br><div class='btnRemove "+aProducts[i]+"'>"+aProducts[i]+"</div><br>";
+          theListToMainMenu.insertAdjacentHTML('beforeend', sDivProduct);
+        }
+
+        //Remove from list!
+        for (var j = 0; j < btnRemove.length; j++) {
+          btnRemove[j].addEventListener("click", function(){
+            aProducts.splice(this, 1);
+            this.remove();
+          });
+        }
+
+        /*NEED TO DELETE FROM THE ARRAY AND LS*/
+      });
+
+    </script>
+  </body>
+</html>
