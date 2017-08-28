@@ -67,7 +67,7 @@
       var btnAddProduct = document.querySelector("#btnAddProduct");
       var txtProductName = document.querySelector("#txtProductName");
       var theListToMainMenu = document.querySelector("#pageMainMenu");
-      var btnRemove = document.getElementsByClassName("btnRemove");
+      var btnRemove = document.getElementsByClassName("btnRemoveItem");
       var aProducts = [];
       var iCounter = 0;
       var sProductName = "";
@@ -77,9 +77,8 @@
         iCounter += 1;
         sProductName = txtProductName.value;
 
-        //aProducts.push([iCounter, sProductName]);
-        aProducts.push(sProductName);
-        // console.log( aProducts );
+        aProducts.push(iCounter, sProductName);
+        console.log( aProducts );
 
         //Add to localStorage
         sSaveDataToStorage = JSON.stringify(aProducts);
@@ -87,16 +86,20 @@
 
         //Show In Main Menu
         theListToMainMenu.innerHTML = "";
-        for(var i = 0 ; i < aProducts.length ; i++){
-          sDivProduct = "<br><div class='btnRemove "+aProducts[i]+"'>"+aProducts[i]+"</div><br>";
+        for(var i = 0 ; i < aProducts.length ; i+=2){
+          sDivProduct = '<br>\
+                          <div class="btnRemoveItem" data-productId="'+aProducts[i]+'">'+aProducts[i]+'</div>\
+                          <div class="btnRemoveItem" data-productId="'+aProducts[i]+'">'+aProducts[i+1]+'</div>\
+                        <br>';
           theListToMainMenu.insertAdjacentHTML('beforeend', sDivProduct);
         }
 
         //Remove from list!
         for (var j = 0; j < btnRemove.length; j++) {
           btnRemove[j].addEventListener("click", function(){
-            aProducts.splice(this, 1);
+            aProducts.splice(this, 2);
             this.remove();
+            console.log( aProducts );
           });
         }
 
