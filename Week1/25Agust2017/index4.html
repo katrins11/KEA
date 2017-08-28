@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <title></title>
     <style media="screen">
-    *{
-      margin: 0;
-      padding: 0;
-    }
+      *{
+        margin: 0;
+        padding: 0;
+      }
       #pageMainMenu, #pageAddToMenu{
         position: absolute;
         justify-content: center;
@@ -97,15 +97,22 @@
         //Remove from list!
         for (var j = 0; j < btnRemove.length; j++) {
           btnRemove[j].addEventListener("click", function(){
-            aProducts.splice(this, 2);
-            this.remove();
+            //Remove from array
+            var sDataAttibute = this.getAttribute("data-productId");
+            var iProductId = Number(sDataAttibute);
+            var iPositionOfProductId = aProducts.indexOf(iProductId);
+            aProducts.splice(iPositionOfProductId, 2);
             console.log( aProducts );
+            //Remove from LS
+            sSaveDataToStorage = JSON.stringify(aProducts);
+            localStorage.sSaveDataToStorage = sSaveDataToStorage;
+            //Remove from screen!
+            this.remove();
+            //Only removes 1, How can I remove both at the same time?
           });
         }
-
-        /*NEED TO DELETE FROM THE ARRAY AND LS*/
       });
-      
+
 
     </script>
   </body>
