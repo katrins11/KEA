@@ -150,11 +150,13 @@
       function getFunction(iNumber, iNumber2){
         iNumber *= 10;
         iNumber2 *= 10;
-        return [iNumber, iNumber2];
+        getFunction2(iNumber, iNumber2);
       }
       function getFunction2(iNumber, iNumber2){
-        return [, iNumber2]
+        var aNumbers = [iNumber, iNumber2];
+        console.log(aNumbers[1]);
       }
+
       getFunction(1,2);
 
 
