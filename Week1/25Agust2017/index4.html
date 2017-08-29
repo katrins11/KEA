@@ -77,6 +77,7 @@
         iCounter += 1;
         sProductName = txtProductName.value;
 
+        //Add to the array
         aProducts.push(iCounter, sProductName);
         console.log( aProducts );
 
@@ -87,10 +88,10 @@
         //Show In Main Menu
         theListToMainMenu.innerHTML = "";
         for(var i = 0 ; i < aProducts.length ; i+=2){
-          sDivProduct = '<br>\
+          sDivProduct = '<div>\
                           <div class="btnRemoveItem" data-productId="'+aProducts[i]+'">'+aProducts[i]+'</div>\
                           <div class="btnRemoveItem" data-productId="'+aProducts[i]+'">'+aProducts[i+1]+'</div>\
-                        <br>';
+                        <div>';
           theListToMainMenu.insertAdjacentHTML('beforeend', sDivProduct);
         }
 
@@ -107,7 +108,7 @@
             sSaveDataToStorage = JSON.stringify(aProducts);
             localStorage.sSaveDataToStorage = sSaveDataToStorage;
             //Remove from screen!
-            this.remove();
+            this.parentNode.remove();
             //Only removes 1, How can I remove both at the same time?
           });
         }
