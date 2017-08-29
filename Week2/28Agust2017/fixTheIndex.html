@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WEBSHOP</title>
+  </head>
+  <body>
+
+    <div id="boxProducts">
+        <!--
+        <div class="boxProduct">
+            <div>1</div>
+            <div>A</div>
+        </div>
+        -->
+    </div>
+
+    <div>
+        <!-- Add a product -->
+        <input id="inputProductName" type="text" value="A">
+        <button id="btnSaveProduct">
+            SAVE PRODUCT
+        </button>
+    </div>
+
+    <script>
+
+      var aProducts = [];
+      var iCounter = 1;
+      if( localStorage.sCounter ){
+          iCounter = localStorage.sCounter;
+          console.log(iCounter);
+      }
+
+      // If there is data in the localStorage, keep it.
+      // DO NOT overwrite the data in the array in the localStorage
+      if( localStorage.saProducts ){
+          // the data is a string, so convert it to an object
+          aProducts = JSON.parse( localStorage.saProducts );
+          // Make sure that the products are displayed
+          for(var i = 0; i < aProducts.length; i+=2){
+
+              var sDivProduct = '<div class="boxProduct">\
+                                  <div>1</div>\
+                                  <div>A</div>\
+                                </div>';
+
+              boxProducts.insertAdjacentHTML("beforeend",sDivProduct);
+          }
+      }
+
+      btnSaveProduct.addEventListener("click",function(){
+
+          // click on SAVE PRODUCT
+          // Show the product in the products page
+          var sProductName = inputProductName.value;
+          console.log(sProductName);
+          // txt/input lbl box
+          // var boxProducts = document.querySelector("#boxProducts");
+          boxProducts.insertAdjacentHTML( "beforeend" , sProductName );
+          // Add product info to the array
+          var iProductId = iCounter++;
+          aProducts.push(iProductId,sProductName);
+          console.log(aProducts);
+          // Save it in the localStorage
+          var saProducts = JSON.stringify(aProducts);
+          console.log(saProducts);
+          localStorage.saProducts = saProducts;
+          // Save the counter to the localStorage
+          localStorage.sCounter = iCounter;
+      });
+
+
+
+
+
+    </script>
+  </body>
+</html>

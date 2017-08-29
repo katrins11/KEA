@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>WEBSHOP</title>
+
+	<style>
+
+		*{
+			margin: 0px;
+			padding: 0px;
+			box-sizing: border-box;
+		}
+
+		body{
+			width: 100vw;
+			height: 100vh;
+			overflow: hidden;
+		}
+
+		#boxProducts{
+			display: flex;
+			width: 100vw;
+			/*height: 100vh;*/
+			padding: 0px 20%;
+		}
+
+
+		#boxMenu{
+			display: flex;
+			align-items: center;
+			width: 100vw;
+			height: 50px;
+			background-color: #8200ff;
+			color: white;
+			font-size: 30px;
+			padding: 0px 20%;
+		}
+
+		.boxProduct{
+			display: flex;
+			flex-direction: column;
+			width: calc(100% / 3);
+			align-items: center;
+		}
+		.boxProduct img{
+			width: 250px;
+			height: 250px;
+		}
+		.btnDeleteProduct{
+			width: 100%;
+			height: 40px;
+			padding: 0px 10px;
+			margin-top: 10px;
+		}
+
+	</style>
+
+
+</head>
+<body>
+
+	<div id="boxMenu">
+		<span id="lblDomainName">WØW</span>
+		<span id="lblDomainExtension">.dk</span>
+	</div>
+
+
+
+	<div id="boxProducts">
+			
+
+
+
+		<div class="boxProduct">
+			<div>
+				<img src="https://jetimages.azureedge.net/md5/7d3874004ee2a3915baba90e502aec89.300">
+			</div>
+			<div class="lblProductName">
+				XXXXXXXXXX
+			</div>
+			<div>
+				<button class="btnDeleteProduct" data-productId="1">
+					DELETE PRODUCT
+				</button>
+			</div>
+		</div>
+
+
+
+
+
+		<div class="boxProduct">
+			<div>
+				<img src="https://jetimages.azureedge.net/md5/7d3874004ee2a3915baba90e502aec89.300">
+			</div>
+			<div class="lblProductName">
+				XXXXXXXXXX
+			</div>
+			<div>
+				<button class="btnDeleteProduct" data-productId="2">
+					DELETE PRODUCT
+				</button>
+			</div>
+		</div>
+
+
+
+	</div>
+
+	<!--
+	<div>
+		<input id="inputProductName" type="text" value="A">
+		<button id="btnSaveProduct">
+			SAVE PRODUCT
+		</button>
+	</div>
+	-->
+	<script>
+
+
+	var aProducts = [];
+	var iCounter = 1;
+	if( localStorage.sCounter ){
+		iCounter = localStorage.sCounter;
+		console.log(iCounter);
+	}
+
+	// If there is data in the localStorage, keep it.
+	// DO NOT overwrite the data in the array in the localStorage
+	if( localStorage.saProducts ){
+		// the data is a string, so convert it to an object
+		aProducts = JSON.parse( localStorage.saProducts );
+		// Make sure that the products are displayed
+		for(var i = 0; i < aProducts.length; i+=2){
+			// var sDivProduct = '<div class="boxProduct">'+
+			// 										'<div>1</div>'+
+			// 										'<div>A</div>'+
+			// 									'</div>';
+			var sDivProduct = '<div class="boxProduct">\
+													<div>1</div>\
+													<div>A</div>\
+												</div>';
+			boxProducts.insertAdjacentHTML("beforeend",sDivProduct);
+		}
+	}
+
+
+
+
+	/*
+	btnSaveProduct.addEventListener("click",function(){
+
+		// click on SAVE PRODUCT
+		// Show the product in the products page
+		var sProductName = inputProductName.value;
+		console.log(sProductName);
+		// txt/input lbl box 
+		// var boxProducts = document.querySelector("#boxProducts");
+		boxProducts.insertAdjacentHTML( "beforeend" , sProductName );
+		// Add product info to the array
+		var iProductId = iCounter++;
+		aProducts.push(iProductId,sProductName);
+		console.log(aProducts);
+		// Save it in the localStorage
+		var saProducts = JSON.stringify(aProducts);
+		console.log(saProducts);
+		localStorage.saProducts = saProducts;
+		// Save the counter to the localStorage
+		localStorage.sCounter = iCounter;
+	});
+	*/
+
+	// e stands for event
+	console.log(aProducts);
+	document.addEventListener("click",function(e){
+		if( e.target.classList.contains("btnDeleteProduct") ){
+			// console.log("DELETING A PRODUCT");
+			// HOW DO I GET THE data-productId from it?
+			var sProductId = e.target.getAttribute("data-productId");
+			var iProductId = Number(sProductId);
+			// console.log(sProductId);
+			// [1,"A",2,"B"....]
+			var iPositionOfProductId = aProducts.indexOf(iProductId);
+			console.log("TEST:",iPositionOfProductId);
+			aProducts.splice( iPositionOfProductId , 2 );
+			console.log(aProducts);
+		}	
+	});
+
+
+	/*
+	var sDivButton = '<button class="btnDeleteProduct" data-productId="3">DELETE TEST</button>';
+	boxProducts.insertAdjacentHTML("beforeend",sDivButton);
+
+	// ADD EVENT LISTENER TO THE DELETE BUTTONS
+	var aBtnDeleteProducts = document.querySelectorAll(".btnDeleteProduct");
+	for(var i = 0; i < aBtnDeleteProducts.length; i++ ){
+		aBtnDeleteProducts[i].addEventListener("click",function(){
+			var iProductId = this.getAttribute("data-productId");
+			console.log(iProductId);
+		});
+	}
+	*/
+
+
+	var sDivButton = '<button class="btnDeleteProduct" data-productId="3">DELETE TEST</button>';
+	boxProducts.insertAdjacentHTML("beforeend",sDivButton);
+
+
+	</script>
+
+
+</body>
+</html>

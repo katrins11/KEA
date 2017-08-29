@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      /*
+      Function is an action it is a verb
+      SignUp
+      LogIn
+      LogOut
+      Save product
+      delete product
+
+      click - event
+      clickmouseUp - event
+      keypress - event
+      buy
+      getPrice
+      savePrice
+      editPrice
+
+      jump
+      sleep
+      eat
+      */
+
+      //Declaring a function
+      function showNumber(){
+        console.log(2);
+      }
+      //Run function
+      //showNumber();
+
+      function login(sUserName, sPassword){
+        console.log(sUserName, sPassword);
+      }
+      //login("palli",2);
+
+      function my5Arguments(sName, sLastName, sSchool, iAge, sMessage){
+        console.log("My name is ", sName, sLastName, "I'm in ", sSchool, ", I'm ",iAge, "years old and this is my message: ", sMessage);
+      }
+      my5Arguments("Katrin", "Sigurðdardottir", "KEA", 27, "This is great");
+
+      // HIRED OR FIRED
+      /*
+      Create 4 functions - make sure the name is an action
+      When you run it this is the sequence:
+      function 2 calls function 4
+      function 4 calls function 1
+      function 1 calls function 3
+
+      OutCome:
+      2
+      4
+      1
+      3
+      2
+      */
+      var stop = 0;
+      function signUp(){
+        console.log(1);
+        logOut();
+      }
+      function logIn(){
+        console.log(2);
+        if(stop != 1){
+          stop = 1;
+          saveProduct();
+        }
+      }
+      function logOut(){
+        console.log(3);
+        logIn();
+      }
+      function saveProduct(){
+        console.log(4);
+        signUp();
+      }
+
+      //logIn();
+
+      /*
+      CREATE 3 FUNCTIONS
+      THE FIRST FUNCTION (functionOne) SHOWS A NUMBER THAT YOU PASS TO IT
+      functionOne calls functionTwo and it passes the number it received * 10
+      to function two
+      functionTwo call functionThree passing the number to it (functionThree)
+      functionThree shows the final number in the screen
+      NOTE: functionTwo does NOT display anything in the console
+      NOTE: You must pass values between functions
+      */
+
+      function functionOne(iNumber){
+        console.log(iNumber);
+        iNumber *= 10;
+        functionTwo(iNumber);
+      }
+      function functionTwo(iNumber){
+        functionThree(iNumber);
+      }
+      function functionThree(iNumber){
+        console.log(iNumber);
+      }
+      functionOne(5);
+
+      /*Create a function that returns your name! */
+      function getName(){
+        return "Katrin";
+      }
+      var theName = getName();
+      console.log(theName);
+
+
+
+      /*CREATE function that returns array*/
+      function getArray(){
+        return [1, "katrin"];
+      }
+      var aProducts = getArray();
+      console.log(aProducts);
+
+      /*
+      -Create a function that takes two arguments
+      -the 1st arg is a number
+      -the 2nd arg is a product name
+      -the function RETURNS an array containing the number and the
+      product name
+      - show the array in the console
+      NOTE: The function does NOT show the array in the console
+      */
+      function getProducts(iNumber, sName){
+        return [iNumber, sName];
+      }
+      var aProducts = getProducts(5, "Katrin");
+      console.log(aProducts);
+
+
+
+      /*
+      -create a function that takes two arguments
+      -both arguments are numbers
+      -the function takes each number and multiplies it by 10
+      -the function calls another function passing those numbers
+      to the other function, but the numbers are passed in an array
+      -this last function shows in the console the second number which is in the array
+      */
+      function getFunction(iNumber, iNumber2){
+        iNumber *= 10;
+        iNumber2 *= 10;
+        var aNumbers = [iNumber, iNumber2];
+        getFunction2(aNumbers);
+      }
+      function getFunction2(aData){
+        console.log(aData[1]);
+      }
+
+      getFunction(1,2);
+
+
+    </script>
+  </body>
+</html>

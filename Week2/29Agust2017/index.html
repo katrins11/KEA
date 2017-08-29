@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      #boxUsers{
+        width: 50%;
+        float: left;
+      }
+      #boxUsersMale{
+        width: 50%;
+        float: right;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" id="txtUserName" placeholder="Your Name">
+    <input type="text" id="txtUserLastName" placeholder="Your Last Name">
+    <input type="color" id="txtColor">
+    <!-- <input type="select" id="txtGender"> -->
+    <select id="txtGender">
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
+
+    <button type="button" id="btnSaveUser">Save User</button>
+    <button type="button" id="btnShowUsers">Show User</button>
+    <div id="boxUsers"></div>
+    <div id="boxUsersMale"></div>
+    <script>
+      var ajUsers = [];
+
+      txtUserName = document.querySelector("#txtUserName");
+      txtUserLastName = document.querySelector("#txtUserLastName");
+      btnSaveUser = document.querySelector("#btnSaveUser");
+      btnShowUsers = document.querySelector("#btnShowUsers");
+      boxUsers = document.querySelector("#boxUsers");
+      boxUsersMale = document.querySelector("#boxUsersMale");
+      txtColor = document.querySelector("#txtColor");
+      txtGender = document.querySelector("#txtGender");
+
+      btnSaveUser.addEventListener("click", function(){
+        var jUser = {};
+        var jName = txtUserName.value;
+        var jLastName = txtUserLastName.value;
+        var jColor = txtColor.value;
+        var jGender = txtGender.value;
+        //console.log("name:",jName);
+
+        jUser.name = jName;
+        jUser.lastName = jLastName;
+        jUser.color = jColor;
+        jUser.gender = jGender;
+        ajUsers.push(jUser);
+        console.log("array:", ajUsers);
+      });
+
+
+      btnShowUsers.addEventListener("click", function(){
+        //console.log("x");
+        boxUsers.innerHTML = "";
+        boxUsersMale.innerHTML = "";
+        var sDivProductMale = "";
+        var sDivProductFemale = "";
+        for (var i = 0; i < ajUsers.length; i++) {
+          var sUserName = ajUsers[i].name;
+          var sUserLastName = ajUsers[i].lastName;
+          var sColor = ajUsers[i].color;
+          var sGender = ajUsers[i].gender;
+          console.log(sColor);
+          var boxInitItem = '<div class="btnRemoveItem" style="color:'+sColor+';">'+sUserName+' '+sUserLastName+'</div>';
+          if(sGender == "male"){
+            sDivProductMale += boxInitItem;
+            //console.log(sDivProduct);
+          }
+          else{
+            sDivProductFemale += boxInitItem;
+          }
+        }
+
+        boxUsersMale.insertAdjacentHTML('beforeend', sDivProductMale);
+        boxUsers.insertAdjacentHTML('beforeend', sDivProductFemale);
+      });
+    </script>
+  </body>
+</html>
