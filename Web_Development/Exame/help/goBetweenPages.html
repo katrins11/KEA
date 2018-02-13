@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WEBSHOP 1</title>
+    <style>
+      *{
+        margin: 0px;
+        padding: 0px;
+      }
+
+      body{
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      #pageMainMenu, #pageViewProducts, #pageAddProduct{
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        color: white;
+        font-size: 50px;
+      }
+
+      #pageMainMenu{
+        display: flex;
+        background-color: purple;
+        z-index: 1;
+      }
+      #pageViewProducts{
+        background-color: black;
+      }
+      #pageAddProduct{
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+
+    <button class="btnShowPage" data-showThisPage="pageMainMenu">MAIN MENU</button>
+    <button class="btnShowPage" data-showThisPage="pageViewProducts">VIEW PRODUCTS</button>
+    <button class="btnShowPage" data-showThisPage="pageAddProduc">ADD PRODUCT</button>
+
+    <div id="pageMainMenu" class="page">
+        MAIN MENU
+    </div>
+
+    <div id="pageViewProducts" class="page">VIEW PRODUCTS</div>
+
+    <div id="pageAddProduc" class="page">
+      Add Products
+      <input type="text" id="txtProductName" placeholder="Product Name">
+      <input type="text" id="txtProductPrice" placeholder="Product Price">
+      <button id="btnAddProduct">ADD PRODUCT</button>
+    </div>
+
+    <!-- Code to add item/price to a list and display on another page -->
+    <script>
+      //Empty array for products
+      var aProducts = [];
+
+      //When the button add product is clicked
+      var btnAddProduct = document.querySelector(" #btnAddProduct ");
+      //console.log( btnAddProduct );
+      btnAddProduct.addEventListener("click", function(){
+        var txtProductName = document.querySelector("#txtProductName");
+        var txtProductPrice = document.querySelector("#txtProductPrice");
+        var sProductName = txtProductName.value;
+        var sProductPrice = txtProductPrice.value;
+        console.log( sProductName );
+        aProducts.push([sProductName, sProductPrice]);
+        console.log( aProducts );
+
+        var theList = document.querySelector("#pageViewProducts");
+        theList.innerHTML = "";
+        for(var i = 0 ; i < aProducts.length ; i++){
+          theList.insertAdjacentHTML('beforeend', aProducts[i]);
+        }
+      });
+    </script>
+
+    <!-- Code to go between Pages, could be as many pages as you want! -->
+    <script>
+        var aBtnShowPages = document.getElementsByClassName("btnShowPage");
+        // this is an array
+        for(var i = 0; i < aBtnShowPages.length; i++)
+        {
+            // console.log("x");
+            aBtnShowPages[i].addEventListener("click",function(){
+                // console.log("x");
+                // Hide the pages
+                var aPages = document.getElementsByClassName( "page" );
+                for(var j = 0; j < aPages.length; j++)
+                {
+                    // console.log("x");
+                    aPages[j].style.display = "none";
+                }
+
+                var sDataAttibute = this.getAttribute("data-showThisPage");
+                // pageOne or pageAddProduct
+
+                var message = "You are on: " + sDataAttibute;
+                console.log(message);
+                document.getElementById(sDataAttibute).style.display = "flex";
+            });
+        }
+    </script>
+  </body>
+</html>

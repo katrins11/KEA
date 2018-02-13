@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>WEBSHOP 1</title>
+  </head>
+  <body>
+
+    <!-- CODE TO ADD ITEM TO LIST ON CLICK! -->
+    <div id="lblProducts">
+      <div>SHOES</div>
+    </div>
+    <button id="btnShowProducts">LOAD MORE</button>
+
+    <script>
+      // Pretend this data came from the server
+      var aProducts = ["T-SHIRT", "TABLE", "CHAIR"];
+      // Show the product when the button is clicked
+      var brnShowProducts = document.querySelector("#btnShowProducts");
+      btnShowProducts.addEventListener("click", function(){
+        //<div>XXXX</div>
+        var sProductName = "";
+        var sDivProduct = "";
+        var lblProducts = document.querySelector("#lblProducts");
+        for (var i = 0; i < aProducts.length; i++) {
+          sProductName = aProducts[i]; //T-SHIRT
+          console.log(sProductName);
+
+          //<div>T-SHIRT</div>
+          sDivProduct += "<div>"+sProductName+"</div>";
+        }
+        lblProducts.insertAdjacentHTML( "beforeend", sDivProduct );
+      });
+
+    </script>
+
+
+
+    <!-- CODE TO REMOVE ITEM FROM LIST -->
+    <div class="boxProducts">
+      <br>
+      REMOVE BY CLICK!
+      <div id="lblProductA">A</div>
+      <div id="lblProductB">B</div>
+    </div>
+
+    <script>
+      var lblProductA = document.querySelector("#lblProductA");
+      lblProductA.addEventListener("click", function(){
+        this.remove();
+      });
+      var lblProductB = document.querySelector("#lblProductB");
+      lblProductB.addEventListener("click", function(){
+        this.remove();
+      });
+    </script>
+
+
+    <!-- How beforebeginning, afterbeginning, beforeend and afterend work in insertAdjacentHTML-->
+    <!-- *beforebeginning* -->
+    <div class="">
+      <!-- *afterbeginning* -->
+      <div class=""></div>
+      <!-- *beforeend* -->
+    </div>
+    <!-- *afterend* -->
+
+
+
+  </body>
+</html>

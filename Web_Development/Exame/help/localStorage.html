@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <script>
+      // save text to the local storage
+      // localStorage.sLetter = sLetter;
+
+      // YOU CANNOT WRITE OBJECTS TO THE
+      // LOCAL STORAGE.EG: YOU CANNOT WRITE ARRAYS, OR JSON, ANY OTHER OBJECT
+      var aProducts = ["A","B","C","D"];
+      console.log(aProducts);
+      // use the object (array)
+      // convert the object to text (string)
+      var sProducts = JSON.stringify(aProducts);
+      console.log(sProducts);
+      // write the text that looks like an array
+      // to the local storage
+      localStorage.sProducts = sProducts;
+
+
+      var aNames = ["Jon","Birna","Herdis","Katrin"];
+      var sNames = JSON.stringify(aNames);
+      localStorage.sNames = sNames ;
+
+      //Remove from loacal storage
+      localStorage.removeItem("sNames");
+      //Removes all from local storage
+      // localStorage.clear();
+
+
+      // Read from localstorage
+      var sProducts = localStorage.sProducts;
+      console.log(sProducts);
+      // convert the string to an object
+      var aProducts = JSON.parse( sProducts );
+      console.log(aProducts);
+      aProducts.push("x");
+      console.log(aProducts);
+    </script>
+
+
+
+
+
+    <!-- Code to add as many item's as you want to the list, save to the localStorage and clear the localStorage -->
+
+    <div class="">
+      <input type="text" placeholder="Add Item" id="txtAddItem">
+      <button id="btnAddProduct">Add Product</button>
+      <button id="btnSaveToLocalStorage">Save Data to LocalStorage</button>
+      <button id="btnClearLoacalStorage">Clear LocalStorage</button>
+    </div>
+
+    <script>
+      var btnAddProduct = document.querySelector("#btnAddProduct");
+      var btnSaveToLocalStorage = document.querySelector("#btnSaveToLocalStorage");
+      var btnClearLoacalStorage = document.querySelector("#btnClearLoacalStorage");
+      var txtAddItem = document.querySelector("#txtAddItem");
+      var aAllItems = [];
+      var sAddProductName = "";
+      var sSaveDataToStorage = "";
+
+      btnAddProduct.addEventListener("click", function(){
+        sAddProductName = txtAddItem.value;
+        aAllItems.push([sAddProductName]);
+        console.log(aAllItems);
+      });
+
+      btnSaveToLocalStorage.addEventListener("click", function(){
+        sSaveDataToStorage = JSON.stringify(aAllItems);
+        localStorage.sSaveDataToStorage = sSaveDataToStorage ;
+      });
+
+      btnClearLoacalStorage.addEventListener("click", function(){
+        localStorage.clear();
+      });
+
+    </script>
+
+  </body>
+</html>

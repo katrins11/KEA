@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <!-- An example of JSON is {"name":"Katrin", "lastName":"Sig"} -->
+    <script>
+    var jData = {}; // empty JSON object
+    console.log(jData);
+
+
+    jData = {"name":"Katrin"};
+    console.log(jData);
+    //ectract and show the name
+    console.log(jData.name);
+
+
+    jData = {"name":"A", "lastName":"B"};
+    console.log(jData);
+    //ectract and show the name
+    console.log(jData.name);
+    //ectract and show the last name
+    console.log(jData.lastName);
+
+
+    jData = {"name":"Katrin", "lastName":"Sigurðardóttir"};
+    console.log("Hi, my name is", jData.name, "and my last name is", jData.lastName);
+
+    console.log("Add / Update / Delete Key's")
+    var jUser = {"name":"A","email":"a@a.gmail.com"};
+    console.log(jUser);
+    //Add data to the object - write to it
+    jUser.lastName = "B";
+    console.log(jUser);
+    //Update a kwy - update a lastname to X
+    jUser.lastName = "X";
+    console.log(jUser);
+    //Delete a key
+    delete jUser.email;
+    console.log(jUser);
+
+
+    // Full JSON exercise
+    console.log("Full JSON exercise");
+    // Create a user object - empty
+    // console
+    // Add a key called name with the value X
+    // console
+    // Add a key called lastName with the value Y
+    // console
+    // Update the key name to K
+    // console
+    // Delete the lastName key
+    // console
+      var jData = [];
+      console.log(jData);
+
+      jData = {"name":"X"};
+      console.log(jData);
+      jData.lastName = "Y";
+      console.log(jData);
+      jData.name = "K";
+      console.log(jData);
+      delete jData.lastName;
+      console.log(jData);
+
+
+      //ARRAYS and JSON
+      console.log("ARRAYS and JSON");
+      ajUsers = [
+                  {"name":"A"},
+                  {"name":"B"}
+                ];
+      console.log(ajUsers[0]);
+      console.log(ajUsers[0].name);
+
+      ajUsers[1].name = "X";
+      console.log(ajUsers[1].name);
+
+
+      //User have more then one phoneNumber
+      //Print out the second phoneNumber
+      ajUsers = [
+                  {
+                    "name":"A",
+                    "phoneNumber":["777","444","333"]
+                  }
+                ];
+      console.log(ajUsers[0].phoneNumber[1]);
+
+
+      //Show Toby
+      var ajUsers = [
+                      {"name":"A" , "phones":[1,2,3]},
+                      {"name":"B","siblings":[
+                                              {"name":"AA"},
+                                              {"name":"BB","pets":[
+                                                                    {"name":"Tobi"}
+                                                                  ]}
+                                              ]}
+                    ];
+      console.log(ajUsers[1].siblings[1].pets[0].name);
+      //Add a key-value to the {"name":"Tobi"}
+      //The key will be "message" and the value will be "AABB"
+      var aA = ajUsers[0].name;
+      var bB = ajUsers[1].name;
+      ajUsers[1].siblings[1].pets[0].message = [aA + bB];
+      console.log(ajUsers);
+
+
+
+    </script>
+  </body>
+</html>

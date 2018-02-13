@@ -1,0 +1,294 @@
+<script type="text/javascript">
+/* Basic JavaScript*/
+/* * * * * ICELANDIC Word   -   ENGLISH Word  * * * * */
+//          SVIGI           -   Parantisis / Brackets
+//          Krúsidúllu svigi -  Kurli brackets
+//          Semí komma      -   Semicolon
+//          Tvípunktur      -   Colon
+//          Gæsalappir      -   Quotation marks
+
+  /* * * * * Alert * * * * */
+  // alert(1);
+
+  /* * * * * console log my name * * * * */
+  var myName = "Katrin";
+  var myLastName = "Sigurdardottir";
+  var first = "First Name: " + myName;
+  var last = "Last Name: " + myLastName;
+  var allName = "Full Name: " + myName + " " + myLastName;
+  console.log( first );
+  console.log( last );
+  console.log( allName );
+
+
+  /* * * * * Message with VAR init * * * * */
+  var varName = "A";
+  var varLastName = "B";
+  var varYear = "2017";
+  var varMessage = "Hi, my name is" + varName + " " + varLastName + ". The year is " + varYear;
+  console.log( varMessage );
+
+
+  /* * * * * String to Number * * * * */
+  //Can use: Number / parseInt / parseFloat
+  var price = "10";
+  var tax = "1";
+  var stringToNumberTotal = parseInt(price) + parseInt(tax);
+  console.log( "String to number: " );
+  console.log( stringToNumberTotal );
+
+
+  /* * * * * What is the Difference Between Number(), parseInt(), parseFloat() ?  * * * * */
+  var price = "10.950";
+  var number = Number(price);
+  var parseInt = parseInt(price);
+  var parseFloat = parseFloat(price);
+  //Number(): Turns the string to a number // Setur strenginn yfir í tölu
+  console.log( "Number(): " );
+  console.log( number );
+  //parseInt(): Turns string to a number but only shows whole numbers // Setur streng yfir í tölu en sýnir bara heilar tölur
+  console.log("parseInt(): ");
+  console.log( parseInt );
+  //parseFloat(): Turns string to a number but does not show 0 if it is at the end. 10.99 shows 10.99 but 10.90 shows 10.9.
+  console.log("parseFloat(): ");
+  console.log( parseFloat );
+
+
+  /* * * * * Have price as a number with 2 extra didget and * * * * */
+  // Need to solve if Possible. This solution shows string but we want the outcome to be number.
+  var price = "10.90";
+  var newPrice = Number(price).toFixed(2);
+  console.log( newPrice );
+
+
+  /* * * * * If statements * * * * */
+  var letterA = "A";
+  if( letterA == "A"){
+    var valueA = "Is the letterA = A? " + "YES"
+    console.log( valueA );
+  }
+
+
+  /* * * * * Check login * * * * */
+  var correctUserName = "A";
+  var correctPassword = "1";
+
+  var userName = "A";
+  var password = "1";
+
+  if(correctUserName == userName && correctPassword == password){
+    var theMessage = "Is the username and password right? " +  "YES"
+    console.log( theMessage );
+  }
+  else{
+    var theMessage = "Is the username and password right? " +  "NO"
+    console.log( theMessage );
+  }
+
+  /* * * * * AND / OR * * * * */
+  var currectEmail = "a@a.com";
+  var currectPhone = "12345";
+  var currectPassword = "SECRET";
+
+  var userEmail = "b@g.com";
+  var userPhone = "12345";
+  var userPassword = "SECRET";
+
+  if((currectEmail == userEmail || currectPhone == userPhone) && currectPassword == userPassword){
+    console.log( "If password is right and either email or phone Return Yes: " );
+    console.log( "YES" );
+  }
+  else{
+    console.log( "If password is right and either email or phone Return Yes: " );
+    console.log( "NO" );
+  }
+
+  /* * * * * ARRAY * * * * */
+  var letters = ["A","B","C"];
+  console.log(letters[0]);
+  console.log(letters[1]);
+  //Add to the end of a array
+  letters.push("D");
+  // Delete from a end of the array
+  letters.pop();
+  // Add to the front of array
+  letters.unshift("1");
+  //Delete from the front of array
+  letters.shift();
+
+
+  /* * * * * Create, Read, Update, Delete * * * * */
+  var aNames = ["A", "B", "C", "D"];
+  //Update A to X
+  aNames[0] = "X";
+  console.log( aNames );
+  //Delete Letter B - splice (position, number of elem I want to delete)
+  aNames.splice(1, 1);
+  console.log( aNames );
+
+
+  /* * * * * Hired or Fired * * * * */
+  /* If the user name and password are correct you will change in the array the NO to YES else you will change the NO to a -- */
+  var aData = ["A","B","NO","?"];
+  var sCorrectUserName = "A"; // NO TOUCH
+  var sCorreUserPassword = "1"; // NO TOUCH
+  var sUserName = "A";
+  var sPassword = "B";
+
+  if(sCorrectUserName == sUserName && sCorreUserPassword == sPassword){
+    aData[2] = "YES";
+  }
+  else{
+    aData[2] = "--";
+  }
+  console.log( aData );
+
+
+  /* * * * * Delete the element that is at the position of iIndex * * * * */
+  var aData = ["A", "B", "C", "D", "E"];
+  var iIndex = 2;
+  var iNumberOfElementToDelete = 2;
+  aData.splice(iIndex, iNumberOfElementToDelete);
+  console.log( aData );
+
+
+  /* * * * * Length of a array * * * * */
+  console.log("Length of array: " +aData.length);
+
+  /* * * * * For-loop * * * * */
+  for(var i = 0 ; i < aData.length ; i++){
+    console.log( aData[i] );
+  }
+
+
+  /* * * * * CHECK if you can logIN and find NO in the list and change to YES * * * * */
+  var aData = ["A", "NO", "NO", "D"];
+  var sCorrectUserName = "A";
+  var sCorreUserPassword = "B";
+  var sUserName = "A";
+  var sPassword = "B";
+
+  //Með For lykkju
+  for(var i = 0 ; i < aData.length ; i++){
+    if(sCorrectUserName == sUserName && sCorreUserPassword == sPassword){
+      if(aData[i] == "NO"){
+        aData[i] = "YES"
+      }
+    }
+    else{
+      if(aData[i] == "NO" || aData[i] == "YES"){
+        aData[i] = "--"
+      }
+    }
+  }
+  console.log( aData );
+
+
+  /* * * * * Loop With IndexOf * * * * */
+  var aData = ["A", "NO", "NO", "D"];
+  var iPositionOfNo= aData.indexOf("NO");
+  if(sCorrectUserName == sUserName && sCorreUserPassword == sPassword){
+    aData[iPositionOfNo] = "YES";
+  }
+  if(sCorrectUserName == sUserName && sCorreUserPassword == sPassword){
+    aData[iPositionOfNo] = "NO";
+  }
+  console.log("With indexOf: ");
+  console.log( aData );
+
+
+  /* * * * * Every time is finds a letter A it will delete it * * * * */
+  var aData = ["A", "A", "B", "C", "D"];
+  for(var i = 0 ; i < aData.length ; i++){
+    if(aData[i] == "A"){
+      aData.splice(i, 1);
+      //i-- Because if I delete one item from the list, you have to go back to cover the next item that gets the deleted items place.
+      //e.g. if there are 2 A side by side
+      i--;
+    }
+  }
+  console.log( aData );
+
+
+  /* * * * * Multi dimensional arrays * * * * */
+  var aProducts = [ ["A"],["B"],["C"] ];
+  console.log( aProducts );
+  console.log( aProducts[0][0] );
+  console.log( aProducts[1][0] );
+  console.log( aProducts[2][0] );
+
+  /* * * * * Print out YY * * * * */
+  var aData = [["A",["B"]], ["C",[["D",["XX",[["YY"]]]],["E"]]], ["X"]];
+  // var aData = [
+  //               ["A",["B"]],
+  //               ["C",
+  //                 [
+  //                   ["D",
+  //                     ["XX",
+  //                       [
+  //                         ["YY"]
+  //                       ]
+  //                     ]
+  //                   ],
+  //                   ["E"]
+  //                 ]
+  //               ],
+  //               ["X"]
+  //             ];
+   console.log( aData[1][1][0][1][1][0][0] );
+
+
+  /* * * * * loop and multidimentional array * * * * */
+  var aData = [ [1,"A"],[2,"B"],[1,"C"],[3,"D"] ];
+  for(var i = 0 ; i < aData.length ; i++){
+    // Outcome Should be:
+    // Price 1 for product A
+    // Price 2 for product B
+    var message = "Price " + aData[i][0] + " for product " + aData[i][1];
+    console.log( message );
+  }
+
+
+  /*Understand the client, solve this... tip: use loops - 2 loops*/
+  var aData = [ [1,"A"],[2,"B"],[1,"C"],[3,"D"] ];
+  /* Outcome Should be:
+  A
+  B
+  B
+  C
+  D
+  D
+  D
+  */
+  for(var i = 0 ; i < aData.length ; i++){
+    //console.log(aData[i][0]);
+    for (var j = 0; j < aData[i][0]; j++) {
+      var message = aData[i][1];
+      console.log( message );
+    }
+  }
+
+
+
+  //Run this only one time and one time only
+  //          run this      milliseconds
+  setTimeout( function(){
+    console.log("X");
+  }, 1000);
+
+  // Run something always at a certain time
+  //            run this      always eftir 1 sec
+  setInterval( function(){
+    console.log("Y");
+  }, 1000);
+
+  //Old Test Question
+  //Show counter from 1 and increases every second
+  var iCounter = 1;
+  setInterval( function(){
+    console.log(iCounter);
+    iCounter++;
+  }, 1000);
+
+
+</script>

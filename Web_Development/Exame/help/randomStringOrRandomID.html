@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      var aAllowedCharacters = "123456789ABCDEFGHJKMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz";
+      //Take o, i and l out because they can confuse
+
+      function getUniqueId(){
+        // a random string of 64 alphanumeric characters
+        //console.log(aAllowedCharacters[0]);
+        var sUniqueId = "";
+        for (var i = 0; i < 64; i++) {
+          //console.log(aAllowedCharacters[i]);
+          var iRandomNumber = Math.floor(Math.random() *aAllowedCharacters.length);
+          //console.log(sCharacter);
+          //console.log(aAllowedCharacters[iRandomNumber]);
+          sUniqueId += aAllowedCharacters[iRandomNumber];
+          //console.log(sUniqueId);
+        }
+        return sUniqueId;
+      }
+      console.log(getUniqueId());
+
+      var aUsers = [];
+      for (var i = 0; i < 10; i++) {
+        var jUser = {};
+        jUser.id = getUniqueId();
+        jUser.name = "A";
+        aUsers.push(jUser);
+      }
+      console.log(aUsers);
+
+
+
+      console.log(jUser);
+
+    </script>
+  </body>
+</html>
