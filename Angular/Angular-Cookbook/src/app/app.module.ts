@@ -19,6 +19,7 @@ import { MyFavoriteComponent } from './admin/my-favorite/my-favorite.component';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import {MatMenuModule} from '@angular/material/menu';
     MatCheckboxModule,
     MatToolbarModule,
     MatMenuModule,
+    MatFormFieldModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

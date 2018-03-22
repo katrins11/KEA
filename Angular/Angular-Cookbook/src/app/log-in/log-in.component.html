@@ -1,3 +1,15 @@
 <p>
   log-in works!
 </p>
+
+<form (submit)="onSubmit($event)" >
+  <mat-form-field>
+    <input matInput formControlName="email" placeholder="Enter Your email">
+    <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput formControlName="password" placeholder="Enter your password" type="password">
+  </mat-form-field>
+
+  <button type="submit" >Login</button>
+</form>
