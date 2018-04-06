@@ -20,6 +20,11 @@ import { MyFavoriteComponent } from './admin/my-favorite/my-favorite.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
+
+//AuthService
+import { AuthService } from './auth.service';
+import { AuthGuardService } from './auth-guard.service';
 
 
 @NgModule({
@@ -43,8 +48,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatToolbarModule,
     MatMenuModule,
     MatFormFieldModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthGuardService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

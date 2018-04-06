@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
+import { PasswordValidator } from '../PasswordValidator';
 
 @Component({
   selector: 'app-log-in',
@@ -9,25 +11,39 @@ import { Router } from '@angular/router';
 })
 
 export class LogInComponent implements OnInit {
-  // loginForm: FormGroup;
-  constructor(private router: Router) {
+  loginForm: FormGroup;
+
+  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) {
   };
 
+  onSubmit(loginForm) {
+    console.log("is Valid?: " + loginForm.valid);
+
+    if (loginForm.valid) {
+      // Send an http request to login
+      // Navigate to the home page (or some other page)
+      this.authService.login().subscribe(x => {
+        // Can you naviate to the path the user tried to go to instead of 
+        // always the contact?
+        this.router.navigate(['admin']);
+      });
+      
+    } else {
+      // Display error messages.
+    }
+    console.log("Hi there!");
+   }
+
   ngOnInit() {
-    // this.loginForm = this.fb.group({
-    //   email: ['', ],
-    //   password: ['', ]
-    // });
-  }
-
-  onSubmit(e){
-    e.preventDefault();
-    var email = e.target.elements[0].value;
-    var password = e.target.elements[1].value;
-    console.log(email, password);
-
-    if(email == "katrin" && password == "admin"){
-      this.router.navigate(['admin']);    }
+    this.loginForm = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', 
+      Validators.compose([
+        Validators.required,
+        PasswordValidator.getPasswordValidator()
+       ]
+      )]
+    });
   }
 
 }

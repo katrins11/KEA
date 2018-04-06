@@ -3,7 +3,8 @@
   Logo
   <button mat-button routerLink="all-recipres" >All Recipes</button>
   <button mat-button routerLink="add-recipre">Add Recipe</button>
-  <button mat-button routerLink="log-in">Log In</button>
+  <button mat-button routerLink="log-in" *ngIf="!authService.isLoggedIn">Login </button>
+  <button mat-button routerLink="" *ngIf="authService.isLoggedIn" (click)="authService.logout()">Logout </button>
 </mat-toolbar>
 
 <router-outlet></router-outlet>
