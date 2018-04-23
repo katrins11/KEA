@@ -12,11 +12,13 @@ import { PasswordValidator } from '../PasswordValidator';
 
 export class LogInComponent implements OnInit {
   loginForm: FormGroup;
+  signUpForm: FormGroup;
+  formImage = 'http://placehold.it/180';
 
   constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) {
   };
 
-  onSubmit(loginForm) {
+  onLogInSubmit(loginForm) {
     console.log("is Valid?: " + loginForm.valid);
 
     if (loginForm.valid) {
@@ -30,11 +32,55 @@ export class LogInComponent implements OnInit {
       
     } else {
       // Display error messages.
+      console.log("LogIn: Something is missing!");
     }
-    console.log("Hi there!");
-   }
+  }
+
+  onSignUpSubmit(signUpForm) {
+    //console.log("is Valid?: " + signUpForm.valid);
+    console.log("Form: " , signUpForm.controls);
+
+    if (signUpForm.valid) {
+      // Send an http request to login
+      // Navigate to the home page (or some other page)
+      this.authService.login().subscribe(x => {
+        // Can you naviate to the path the user tried to go to instead of 
+        // always the contact?
+        this.router.navigate(['admin']);
+      });
+      
+    } else {
+      // Display error messages.
+      console.log("SignUp: Something is missing!");
+    }
+  }
+
+  readUrl(event:any) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+  
+      reader.onload = (event:any) => {
+        this.formImage = event.target.result;
+      }
+  
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  }
+
+  // readURL(input) {
+  //   if (input.files && input.files[0]) {
+  //       var reader = new FileReader();
+  //       console.log("img: ", reader);
+  //       // reader.onload = function (e) {
+  //       //     $('#blah').attr('src', e.target.result);
+  //       // };
+
+  //       // reader.readAsDataURL(input.files[0]);
+  //   }
+  // }
 
   ngOnInit() {
+    // LogIn
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', 
@@ -43,6 +89,15 @@ export class LogInComponent implements OnInit {
         PasswordValidator.getPasswordValidator()
        ]
       )]
+    });
+    // SignUp
+    this.signUpForm = this.fb.group({
+      fullname: ['', Validators.required],
+      signUpUsername: ['', Validators.required],
+      location: ['', Validators.required],
+      email: ['', Validators.required],
+      signUpPassword: ['', Validators.required],
+      about: ['', Validators.required],
     });
   }
 

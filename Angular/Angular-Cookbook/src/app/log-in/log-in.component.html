@@ -9,29 +9,87 @@
 
   <button type="submit" >Login</button>
 </form> -->
-
-<form [formGroup]="loginForm" (submit)="onSubmit(loginForm)" novalidate>
-  
-  <label>Username
-    <mat-form-field>
-      <input matInput placeholder="username" formControlName="username">
-    </mat-form-field>
-    <!-- <input formControlName="username"> -->
-  </label>
-  <div *ngIf="loginForm.controls.username.errors?.required && loginForm.controls.username.touched">
-    You must fill out your username
+<div id="loginSignUp">
+  <div id="formLogIn">
+    <h2>Log In</h2>
+    <form [formGroup]="loginForm" (submit)="onLogInSubmit(loginForm)" novalidate>
+      
+      <mat-form-field>
+        <input matInput placeholder="Enter username" formControlName="username">
+      </mat-form-field>
+      <div *ngIf="loginForm.controls.username.errors?.required && loginForm.controls.username.touched">
+        You must fill out your username
+      </div>
+      
+      <mat-form-field>
+        <input matInput placeholder="Enter Password" formControlName="password">
+      </mat-form-field>
+      <div *ngIf="loginForm.controls.password.errors?.invalidPassword && loginForm.controls.password.touched">
+        Invalid Password
+      </div>
+    
+      <p>Form value: {{ loginForm.value | json }}</p>
+      <p>Form status: {{ loginForm.status | json }}</p>
+    
+      <!-- [disabled]="loginForm.invalid" -->
+      <button mat-button type="submit" >Login</button>
+    </form>
   </div>
-  
-  <label>Password
-    <input formControlName="password">
-  </label>
-  <div *ngIf="loginForm.controls.password.errors?.invalidPassword">
-    Invalid Password
+  <div id="formSignUp">
+    <h2>Sign Up</h2>
+    <form [formGroup]="signUpForm" (submit)="onSignUpSubmit(signUpForm)" novalidate>
+      <mat-form-field>
+        <input matInput placeholder="Enter Fullname" formControlName="fullname">
+      </mat-form-field>
+      <div *ngIf="signUpForm.controls.fullname.errors?.required && signUpForm.controls.fullname.touched">
+        You must fill out your FullName
+      </div>
+
+      <mat-form-field>
+        <input matInput placeholder="Enter username" formControlName="signUpUsername">
+      </mat-form-field>
+      <div *ngIf="signUpForm.controls.signUpUsername.errors?.required && signUpForm.controls.signUpUsername.touched">
+        You must fill out your username
+      </div>
+
+      <mat-form-field>
+        <input matInput placeholder="Enter city/country" formControlName="location">
+      </mat-form-field>
+      <div *ngIf="signUpForm.controls.location.errors?.required && signUpForm.controls.location.touched">
+        You must fill out your location
+      </div>
+
+      <mat-form-field>
+        <input matInput placeholder="Enter email" email formControlName="email">
+      </mat-form-field>
+      <div *ngIf="signUpForm.controls.email.errors?.required && signUpForm.controls.email.touched">
+        You must fill out your email
+      </div>
+      
+      <mat-form-field>
+        <input matInput placeholder="Enter Password" formControlName="signUpPassword">
+      </mat-form-field>
+      <div *ngIf="signUpForm.controls.signUpPassword.errors?.invalidPassword && signUpForm.controls.signUpPassword.touched">
+        Invalid Password
+      </div>
+
+      <mat-form-field>
+        <textarea matInput id="" cols="30" rows="10" placeholder="Tell a little about yourself" formControlName="about"></textarea>
+      </mat-form-field>
+      <div *ngIf="signUpForm.controls.about.errors?.required && signUpForm.controls.about.touched">
+          You must put something about you
+      </div>
+
+      <input type='file' (change)="readUrl($event)">
+      <img [src]="formImage">
+    
+      <p>Form value: {{ signUpForm.value | json }}</p>
+      <p>Form status: {{ signUpForm.status | json }}</p>
+    
+      <!-- [disabled]="loginForm.invalid" -->
+      <button mat-button type="submit" >Login</button>
+    </form>
   </div>
+</div>
 
-  <p>Form value: {{ loginForm.value | json }}</p>
-  <p>Form status: {{ loginForm.status | json }}</p>
 
-  <!-- [disabled]="loginForm.invalid" -->
-  <button type="submit" >Login</button>
-</form>
