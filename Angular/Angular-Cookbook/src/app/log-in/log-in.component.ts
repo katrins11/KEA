@@ -55,7 +55,8 @@ export class LogInComponent implements OnInit {
     }
   }
 
-  readUrl(event:any) {
+  //Images
+  signUpImg(event:any) {
     if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
   
@@ -67,37 +68,29 @@ export class LogInComponent implements OnInit {
     }
   }
 
-  // readURL(input) {
-  //   if (input.files && input.files[0]) {
-  //       var reader = new FileReader();
-  //       console.log("img: ", reader);
-  //       // reader.onload = function (e) {
-  //       //     $('#blah').attr('src', e.target.result);
-  //       // };
-
-  //       // reader.readAsDataURL(input.files[0]);
-  //   }
-  // }
 
   ngOnInit() {
     // LogIn
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', 
-      Validators.compose([
-        Validators.required,
-        PasswordValidator.getPasswordValidator()
-       ]
-      )]
+        Validators.compose([
+          Validators.required,
+          PasswordValidator.getPasswordValidator()
+        ])
+      ]
     });
     // SignUp
     this.signUpForm = this.fb.group({
-      fullname: ['', Validators.required],
+      firstname: ['', Validators.required],
+      lastname: ['', Validators.required],
       signUpUsername: ['', Validators.required],
       location: ['', Validators.required],
       email: ['', Validators.required],
+      profession: ['', Validators.required],
       signUpPassword: ['', Validators.required],
       about: ['', Validators.required],
+      signUpImage: ['']
     });
   }
 

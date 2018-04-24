@@ -15,14 +15,14 @@
     <form [formGroup]="loginForm" (submit)="onLogInSubmit(loginForm)" novalidate>
       
       <mat-form-field>
-        <input matInput placeholder="Enter username" formControlName="username">
+        <input matInput placeholder="Enter username" autocomplete="username" formControlName="username">
       </mat-form-field>
       <div *ngIf="loginForm.controls.username.errors?.required && loginForm.controls.username.touched">
         You must fill out your username
       </div>
       
       <mat-form-field>
-        <input matInput placeholder="Enter Password" formControlName="password">
+        <input matInput placeholder="Enter Password" autocomplete="current-password" formControlName="password">
       </mat-form-field>
       <div *ngIf="loginForm.controls.password.errors?.invalidPassword && loginForm.controls.password.touched">
         Invalid Password
@@ -39,48 +39,62 @@
     <h2>Sign Up</h2>
     <form [formGroup]="signUpForm" (submit)="onSignUpSubmit(signUpForm)" novalidate>
       <mat-form-field>
-        <input matInput placeholder="Enter Fullname" formControlName="fullname">
+        <input matInput placeholder="Enter Firstname" autocomplete="name" formControlName="firstname">
       </mat-form-field>
-      <div *ngIf="signUpForm.controls.fullname.errors?.required && signUpForm.controls.fullname.touched">
-        You must fill out your FullName
+      <div *ngIf="signUpForm.controls.firstname.errors?.required && signUpForm.controls.firstname.touched">
+        You must fill out your FirstName
       </div>
 
       <mat-form-field>
-        <input matInput placeholder="Enter username" formControlName="signUpUsername">
+        <input matInput placeholder="Enter Lastname" autocomplete="name" formControlName="lastname">
+      </mat-form-field>
+      <div *ngIf="signUpForm.controls.lastname.errors?.required && signUpForm.controls.lastname.touched">
+        You must fill out your LastName
+      </div>
+
+      <mat-form-field>
+        <input matInput placeholder="Enter username" autocomplete="username" formControlName="signUpUsername">
       </mat-form-field>
       <div *ngIf="signUpForm.controls.signUpUsername.errors?.required && signUpForm.controls.signUpUsername.touched">
         You must fill out your username
       </div>
 
       <mat-form-field>
-        <input matInput placeholder="Enter city/country" formControlName="location">
+        <input matInput placeholder="Enter Profession" autocomplete="username" formControlName="profession">
+      </mat-form-field>
+      <div *ngIf="signUpForm.controls.profession.errors?.required && signUpForm.controls.profession.touched">
+        You must fill out your Profession
+      </div>
+
+      <mat-form-field>
+        <input matInput placeholder="Enter location" autocomplete="country-name" formControlName="location">
       </mat-form-field>
       <div *ngIf="signUpForm.controls.location.errors?.required && signUpForm.controls.location.touched">
         You must fill out your location
       </div>
 
       <mat-form-field>
-        <input matInput placeholder="Enter email" email formControlName="email">
+        <input matInput placeholder="Enter email" autocomplete="email" email formControlName="email">
       </mat-form-field>
       <div *ngIf="signUpForm.controls.email.errors?.required && signUpForm.controls.email.touched">
         You must fill out your email
       </div>
       
       <mat-form-field>
-        <input matInput placeholder="Enter Password" formControlName="signUpPassword">
+        <input matInput placeholder="Enter Password" autocomplete="new-password" formControlName="signUpPassword">
       </mat-form-field>
       <div *ngIf="signUpForm.controls.signUpPassword.errors?.invalidPassword && signUpForm.controls.signUpPassword.touched">
         Invalid Password
       </div>
 
       <mat-form-field>
-        <textarea matInput id="" cols="30" rows="10" placeholder="Tell a little about yourself" formControlName="about"></textarea>
+        <textarea matInput id="" cols="30" rows="10" placeholder="Tell a little about yourself" autocomplete="" formControlName="about"></textarea>
       </mat-form-field>
       <div *ngIf="signUpForm.controls.about.errors?.required && signUpForm.controls.about.touched">
           You must put something about you
       </div>
 
-      <input type='file' (change)="readUrl($event)">
+      <input type='file' (change)="signUpImg($event)" formControlName="signUpImage">
       <img [src]="formImage">
     
       <p>Form value: {{ signUpForm.value | json }}</p>
