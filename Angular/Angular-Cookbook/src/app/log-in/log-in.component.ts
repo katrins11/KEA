@@ -42,6 +42,7 @@ export class LogInComponent implements OnInit {
 
     if (signUpForm.valid) {
       // Send an http request to login
+
       // Navigate to the home page (or some other page)
       this.authService.login().subscribe(x => {
         // Can you naviate to the path the user tried to go to instead of 
@@ -84,13 +85,16 @@ export class LogInComponent implements OnInit {
     this.signUpForm = this.fb.group({
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
-      signUpUsername: ['', Validators.required],
-      location: ['', Validators.required],
-      email: ['', Validators.required],
+      phone_number: ['', Validators.required],
       profession: ['', Validators.required],
-      signUpPassword: ['', Validators.required],
-      about: ['', Validators.required],
-      signUpImage: ['']
+      location: ['', Validators.required],
+      instagram_url: ['', Validators.required],
+      facebook_url: ['', Validators.required],
+      twitter_url: ['', Validators.required],
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+      description: ['', Validators.required],
+      profile_image: ['']
     });
   }
 

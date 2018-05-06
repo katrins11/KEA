@@ -1,0 +1,57 @@
+@import "../styles.scss";
+
+/* *** *** *** app.component.html *** *** *** */
+mat-toolbar:nth-child(1){
+    height: 100px;
+    position: relative;
+    background-color: $white;
+    box-shadow: 0 2px 10px 0 rgba($lightBlue, 0.08);
+    .header-nav{
+        position: absolute;
+        right: 30px;
+        color: $lightBlue;  
+    }
+}
+
+mat-toolbar:nth-child(4){
+    height: 100px;
+    position: relative;
+    .footer-nav{
+        display: inline-flex;
+        margin-left: 80px;
+        margin-top: 45px;
+        p{
+            font-size: 12px;
+            padding-top: 5px;
+        }
+        .footer-social-media{
+            margin-left: 30px;
+            .btnNone{
+                width: 20px;
+                padding: 0;
+            }
+        }
+    }
+    .footer-newsletter{
+        h4{
+            font-size: 18px;
+        }
+        input{
+            width: 485px;
+            height: 40px;
+            border: none;
+            margin-right: 28px;
+            text-indent: 23px;
+            font-size: 14px;
+            font-weight: $fontRegular;
+            color: $lightGrey;
+        }
+        button{
+            padding: 2px 16px;
+        }
+    }
+}
+
+
+
+

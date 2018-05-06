@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 //Material
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSelectModule} from '@angular/material/select';
 //Routing
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 //Pages
+import { HomeComponent } from './home/home.component';
 import { PiecesComponent } from './pieces/pieces.component';
 import { CreativesComponent } from './creatives/creatives.component';
 import { AboutComponent } from './about/about.component';
@@ -32,6 +34,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { AuthGuardService } from './auth-guard.service';
 
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 
@@ -48,7 +52,8 @@ import { AuthGuardService } from './auth-guard.service';
     ServiceChatComponent,
     CreativesComponent,
     AboutComponent,
-    PiecesComponent
+    PiecesComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -59,8 +64,10 @@ import { AuthGuardService } from './auth-guard.service';
     MatCheckboxModule,
     MatToolbarModule,
     MatMenuModule,
+    MatSelectModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [AuthGuardService, AuthService],
   bootstrap: [AppComponent]

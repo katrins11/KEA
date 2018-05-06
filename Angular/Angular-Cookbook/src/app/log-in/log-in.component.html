@@ -1,109 +1,128 @@
-<!-- <form (submit)="onSubmit($event)" >
-  <mat-form-field>
-    <input matInput formControlName="email" placeholder="Enter Your email">
-    <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput formControlName="password" placeholder="Enter your password" type="password">
-  </mat-form-field>
-
-  <button type="submit" >Login</button>
-</form> -->
 <div id="loginSignUp">
+  <div id="formSignUp">
+    <div class="formSignUp__header">
+      <div class="formSignUp__header__close">
+        close
+      </div>
+      <div class="formSignUp__header__logo">Logo</div>
+        <h2>Sign up to Young Nordic Artists & Designers</h2>
+      </div>
+      <form [formGroup]="signUpForm" (submit)="onSignUpSubmit(signUpForm)" novalidate>
+        
+        <mat-form-field>
+          <input matInput placeholder="Enter Firstname" autocomplete="name" formControlName="firstname">
+          <input matInput placeholder="Enter Lastname" autocomplete="name" formControlName="lastname">
+        </mat-form-field>
+        <div *ngIf="signUpForm.controls.firstname.errors?.required && signUpForm.controls.firstname.touched || signUpForm.controls.lastname.errors?.required && signUpForm.controls.lastname.touched">
+          You must fill out FirstName and LastName
+        </div>
+
+        <mat-form-field>
+          <input matInput placeholder="Enter Phone Number" autocomplete="tel" formControlName="phone_number">
+        </mat-form-field>
+        <div *ngIf="signUpForm.controls.phone_number.errors?.required && signUpForm.controls.phone_number.touched">
+          You must fill out your phone number
+        </div>
+        
+        <mat-form-field>
+          <input matInput placeholder="Enter Profession" formControlName="profession">
+        </mat-form-field>
+        <div *ngIf="signUpForm.controls.profession.errors?.required && signUpForm.controls.profession.touched">
+          You must fill out your Profession
+        </div>
+        
+        
+        <mat-form-field>
+            <mat-select placeholder="Select" formControlName="location">
+                <mat-option value="option">Option</mat-option>
+              </mat-select>
+        </mat-form-field>
+        <div *ngIf="signUpForm.controls.location.errors?.required && signUpForm.controls.location.touched">
+            You must fill out your location
+        </div>
+        
+
+        <mat-form-field>
+          <input matInput placeholder="Enter instagram url" formControlName="instagram_url">
+        </mat-form-field>
+        <div *ngIf="signUpForm.controls.instagram_url.errors?.required && signUpForm.controls.instagram_url.touched">
+          You must fill out your Instagram Url
+        </div>
+        <mat-form-field>
+          <input matInput placeholder="Enter facebook url" formControlName="facebook_url">
+        </mat-form-field>
+        <div *ngIf="signUpForm.controls.facebook_url.errors?.required && signUpForm.controls.facebook_url.touched">
+          You must fill out your Facebook url
+        </div>
+        <mat-form-field>
+          <input matInput placeholder="Enter twitter url" formControlName="twitter_url">
+        </mat-form-field>
+        <div *ngIf="signUpForm.controls.twitter_url.errors?.required && signUpForm.controls.twitter_url.touched">
+          You must fill out your Twitter url
+        </div>
+
+        <mat-form-field>
+          <input matInput placeholder="Enter email" autocomplete="email" email formControlName="email">
+        </mat-form-field>
+        <div *ngIf="signUpForm.controls.email.errors?.required && signUpForm.controls.email.touched">
+          You must fill out your email
+        </div>
+              
+        <mat-form-field>
+          <input matInput placeholder="Enter Password" autocomplete="new-password" formControlName="password">
+        </mat-form-field>
+        <div *ngIf="signUpForm.controls.password.errors?.invalidPassword && signUpForm.controls.password.touched">
+          Invalid Password
+        </div>
+
+        <mat-form-field>
+          <textarea matInput id="" cols="30" rows="10" placeholder="Tell a little about yourself" autocomplete="" formControlName="description"></textarea>
+        </mat-form-field>
+        <div *ngIf="signUpForm.controls.description.errors?.required && signUpForm.controls.description.touched">
+            You must put something about you
+        </div>
+
+        <input type='file' (change)="signUpImg($event)" formControlName="profile_image">
+        <img [src]="formImage">
+      
+        <p>Form value: {{ signUpForm.value | json }}</p>
+        <p>Form status: {{ signUpForm.status | json }}</p>
+            
+        <!-- [disabled]="loginForm.invalid" -->
+        <button mat-button type="submit" >Login</button>
+      </form>
+  </div>
   <div id="formLogIn">
-    <h2>Log In</h2>
+    <div class="formLogIn__header">
+      <div class="formLogIn__header__close">
+        close
+      </div>
+      <div class="formLogIn__header__logo">Logo</div>
+      <h2>Log in to Young Nordic Artists & Designers</h2>
+    </div>
+    
+    <button class="btnFacebook">Log In using Facebook</button>
     <form [formGroup]="loginForm" (submit)="onLogInSubmit(loginForm)" novalidate>
       
       <mat-form-field>
-        <input matInput placeholder="Enter username" autocomplete="username" formControlName="username">
+        <input matInput placeholder="Username" autocomplete="username" formControlName="username">
       </mat-form-field>
       <div *ngIf="loginForm.controls.username.errors?.required && loginForm.controls.username.touched">
         You must fill out your username
       </div>
       
       <mat-form-field>
-        <input matInput placeholder="Enter Password" autocomplete="current-password" formControlName="password">
+        <input matInput placeholder="Password" autocomplete="current-password" formControlName="password">
       </mat-form-field>
       <div *ngIf="loginForm.controls.password.errors?.invalidPassword && loginForm.controls.password.touched">
         Invalid Password
       </div>
     
-      <p>Form value: {{ loginForm.value | json }}</p>
-      <p>Form status: {{ loginForm.status | json }}</p>
+      <!-- <p>Form value: {{ loginForm.value | json }}</p>
+      <p>Form status: {{ loginForm.status | json }}</p> -->
     
       <!-- [disabled]="loginForm.invalid" -->
-      <button mat-button type="submit" >Login</button>
-    </form>
-  </div>
-  <div id="formSignUp">
-    <h2>Sign Up</h2>
-    <form [formGroup]="signUpForm" (submit)="onSignUpSubmit(signUpForm)" novalidate>
-      <mat-form-field>
-        <input matInput placeholder="Enter Firstname" autocomplete="name" formControlName="firstname">
-      </mat-form-field>
-      <div *ngIf="signUpForm.controls.firstname.errors?.required && signUpForm.controls.firstname.touched">
-        You must fill out your FirstName
-      </div>
-
-      <mat-form-field>
-        <input matInput placeholder="Enter Lastname" autocomplete="name" formControlName="lastname">
-      </mat-form-field>
-      <div *ngIf="signUpForm.controls.lastname.errors?.required && signUpForm.controls.lastname.touched">
-        You must fill out your LastName
-      </div>
-
-      <mat-form-field>
-        <input matInput placeholder="Enter username" autocomplete="username" formControlName="signUpUsername">
-      </mat-form-field>
-      <div *ngIf="signUpForm.controls.signUpUsername.errors?.required && signUpForm.controls.signUpUsername.touched">
-        You must fill out your username
-      </div>
-
-      <mat-form-field>
-        <input matInput placeholder="Enter Profession" autocomplete="username" formControlName="profession">
-      </mat-form-field>
-      <div *ngIf="signUpForm.controls.profession.errors?.required && signUpForm.controls.profession.touched">
-        You must fill out your Profession
-      </div>
-
-      <mat-form-field>
-        <input matInput placeholder="Enter location" autocomplete="country-name" formControlName="location">
-      </mat-form-field>
-      <div *ngIf="signUpForm.controls.location.errors?.required && signUpForm.controls.location.touched">
-        You must fill out your location
-      </div>
-
-      <mat-form-field>
-        <input matInput placeholder="Enter email" autocomplete="email" email formControlName="email">
-      </mat-form-field>
-      <div *ngIf="signUpForm.controls.email.errors?.required && signUpForm.controls.email.touched">
-        You must fill out your email
-      </div>
-      
-      <mat-form-field>
-        <input matInput placeholder="Enter Password" autocomplete="new-password" formControlName="signUpPassword">
-      </mat-form-field>
-      <div *ngIf="signUpForm.controls.signUpPassword.errors?.invalidPassword && signUpForm.controls.signUpPassword.touched">
-        Invalid Password
-      </div>
-
-      <mat-form-field>
-        <textarea matInput id="" cols="30" rows="10" placeholder="Tell a little about yourself" autocomplete="" formControlName="about"></textarea>
-      </mat-form-field>
-      <div *ngIf="signUpForm.controls.about.errors?.required && signUpForm.controls.about.touched">
-          You must put something about you
-      </div>
-
-      <input type='file' (change)="signUpImg($event)" formControlName="signUpImage">
-      <img [src]="formImage">
-    
-      <p>Form value: {{ signUpForm.value | json }}</p>
-      <p>Form status: {{ signUpForm.status | json }}</p>
-    
-      <!-- [disabled]="loginForm.invalid" -->
-      <button mat-button type="submit" >Login</button>
+      <button mat-button type="submit" class="btnSubmit">Login</button>
     </form>
   </div>
 </div>
-
-

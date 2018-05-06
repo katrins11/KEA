@@ -1,9 +1,9 @@
-<mat-toolbar *ngIf="authService.isLoggedIn">
-    <button mat-button routerLink="admin/my-profile" >My Profile</button>
-    <button mat-button routerLink="admin/my-pieces">My Pieces</button>
-    <button mat-button routerLink="admin/admit-piece">Admit pices</button>
-    <button mat-button routerLink="admin/service-chat">Service Chat</button>
-    <button mat-button routerLink="" (click)="authService.logout()">Logout </button>
+<mat-toolbar class="admin-nav" *ngIf="authService.isLoggedIn">
+    <button mat-button class="btnAdminDark" routerLink="admin/my-profile" >My Profile</button>
+    <button mat-button class="btnAdminDark" routerLink="admin/my-pieces">My Pieces</button>
+    <button mat-button class="btnAdminDark" routerLink="admin/admit-piece">Admit pices</button>
+    <button mat-button class="btnAdminDark" routerLink="admin/service-chat">Service Chat</button>
+    <button mat-button class="btnAdminDark" routerLink="" (click)="authService.logout()">Logout </button>
 </mat-toolbar>
 
 <router-outlet></router-outlet>
