@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+    <body>
+        <ul id="allMessages"></ul>
+        <form>
+            <input id="message" plasceholder="write message" type="text">
+            <button>send</button>
+        </form>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+        <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+
+        <script>
+            $(function(){
+                var socket = io('localhost:1981');
+
+                $('form').submit(function(){
+                    var message = $('#message').val();
+                    console.log(message);
+
+                    socket.emit('the message', message);
+                    $('#message').val('');
+
+                    return false;
+                });
+
+                socket.on('the message', function(jData){
+                    $('#allMessages').append($('<li>').text(jData));
+                })
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+The exam is life code in Nodejs, front end and databases.
+The database that you have chosen [CRUD]
+
+Questions in NodeJS can for example be regarding topics as 
+- routing, 
+- callbacks, 
+- async, 
+- sync, 
+- globals, let, var, const, 
+- apis, 
+- using npm, 
+- package.json, 
+- creating files
+- require them... 
+        anything that we have cover in class
+
+Front end can be 
+- create a menu bar, 
+- forms, 
+- ajax, 
+- positioning
+nodejs is also web sockets... really impotant to know this

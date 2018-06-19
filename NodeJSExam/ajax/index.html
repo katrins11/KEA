@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Document</title>
+    </head>
+    <body>
+        <button id="getData">Get Info</button>
+        <div id="divDisplay"></div>
+        
+        <script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>	 
+        <script>
+            $('#getData').click(function() {
+                $('#divDisplay').empty();
+                $.get('/my-info', function(data){
+                    $('#divDisplay').append(data);
+               })
+            });
+        </script>
+    </body>
+</html>
