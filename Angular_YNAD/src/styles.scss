@@ -1,0 +1,238 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+/* *** *** *** Colors *** *** *** */
+$white: #FFFFFF;
+$black: #000000;
+$darkBlue: #283849;
+$lightBlue: #8091A5;
+$lineBlue: #E9EFF4;
+$hoverBlue: #384C61;
+$grey: #4A4A4A;
+$lightGrey: #DFE6EE;
+$pink: #FFBCBC;
+$admin: #F9FDFF;
+$inputText: #B2B2B2;
+$statusApproved: #73AD21;
+$statusPending: #e0d612;
+$statusDenied: #ad2121;
+$btnDelete: #ff5b4f;
+
+/* *** *** *** Font *** *** *** */
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web:200,300,300i,400,600,700,900');
+$fontTitilli: 'Titillium Web', sans-serif;
+$fontExtraLight: 200;
+$fontLight: 300;
+$fontRegular: 400;
+$fontSemiBold: 600;
+$fontBold: 700;
+$fontBlack: 900; 
+
+/* *** *** *** Zero *** *** *** */
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: $admin;
+}
+
+/* *** *** *** Header *** *** *** */
+h1{
+    font-family: $fontTitilli;
+    font-weight: $fontSemiBold;
+    font-size: 30px;
+    color: $darkBlue;
+    letter-spacing: 0;
+    line-height: 50px;
+}
+h2{
+    font-family: $fontTitilli;
+    font-weight: $fontExtraLight;
+    font-size: 20px;
+    color: $grey;
+    letter-spacing: 0;
+}
+h3{
+    font-family: $fontTitilli;
+    font-weight: $fontSemiBold;
+    font-size: 20px;
+    color: $darkBlue;
+    letter-spacing: -0.41px;
+    line-height: 50px;
+}
+h4{
+    font-family: $fontTitilli;
+    font-weight: $fontSemiBold;
+    font-size: 14px;
+    color: $darkBlue;
+    letter-spacing: 0;
+}
+h5{
+    font-family: $fontTitilli;
+    font-weight: $fontSemiBold;
+    font-size: 14px;
+    color: $lightBlue;
+    letter-spacing: -0.26px;
+    line-height: 20px;
+}
+p{
+    font-family: $fontTitilli;
+    font-weight: $fontLight;
+    font-size: 18px;
+    color: $black;
+    letter-spacing: 0;
+    line-height: 32px;
+}
+.like {
+    font-family: $fontTitilli;
+    font-weight: $fontSemiBold;
+    font-size: 12px;
+    color: $pink;
+    letter-spacing: 1px;
+    margin-left: 11px;
+    &::before{
+        // content: url('blackCarrot.png');
+        width: 14px;
+        margin-right: 11px;
+    }
+}
+
+/* *** *** *** Buttons *** *** *** */
+.btnNone{
+    border: none;
+    text-transform: uppercase;
+    font-family: $fontTitilli;
+    font-weight: $fontSemiBold;
+    font-size: 12px;
+    color: $lightBlue;
+    letter-spacing: 1px;
+    outline: none;
+    text-align: center;
+    .mat-button-focus-overlay {
+        background-color:transparent;  
+    }
+}
+.btnDark{
+    background: $darkBlue;
+    color: $white;
+    text-transform: uppercase;
+    font-family: $fontTitilli;
+    font-weight: $fontSemiBold;
+    font-size: 12px;
+    color: $white;
+    outline: none;
+    letter-spacing: 0;
+    text-align: center;
+    height: 40px;
+    width: 140px;
+}
+.btnDelete{
+    background: $btnDelete;
+    color: $white;
+    text-transform: uppercase;
+    font-family: $fontTitilli;
+    font-weight: $fontSemiBold;
+    font-size: 12px;
+    color: $white;
+    letter-spacing: 0;
+    text-align: center;
+    height: 40px;
+    width: 40px;
+    outline: none;
+}
+.btnDeleteLarge {
+    width: 140px;
+    outline: none;
+}
+.btnEdit {
+    background:green;
+    color: $white;
+    text-transform: uppercase;
+    font-family: $fontTitilli;
+    font-weight: $fontSemiBold;
+    font-size: 12px;
+    color: $white;
+    outline: none;
+    letter-spacing: 0;
+    text-align: center;
+    height: 40px;
+    width: 40px;
+}
+.btnLight{
+    border: 1px solid $lightGrey;
+    text-transform: uppercase;
+    font-family: $fontTitilli;
+    font-weight: $fontSemiBold;
+    font-size: 12px;
+    color: $darkBlue;
+    outline: none;
+    letter-spacing: 0;
+    text-align: center;
+    height: 40px;
+    width: 140px;
+}
+.btnWhite{
+    text-transform: uppercase;
+    font-family: $fontTitilli;
+    font-weight: $fontSemiBold;
+    font-size: 12px;
+    color: $white;
+    outline: none;
+    letter-spacing: 1;
+    background-color: transparent;
+    border: 1px solid $white;
+    height: 50px;
+}
+.btnAdminDark{    
+    width: 219px;
+    height: 60px;
+    line-height: 60px;
+    font-family: $fontTitilli;
+    font-weight: $fontSemiBold;
+    font-size: 13px;
+    color: $white;
+    outline: none;
+    letter-spacing: 0;
+    text-align: center;
+    text-decoration: none;
+    background-color: $darkBlue;
+    border-left: 1px solid $hoverBlue;
+    &:hover {
+        background-color: $hoverBlue;
+    }
+}
+.btnWelcome {
+    margin-right: 30px;
+    margin-left: -30px;
+}
+.btnLogo{
+    padding: 0;
+    outline: none;
+}
+ 
+.divWhiteBox{
+    max-width: 1125px;
+    background: #FFFFFF;
+    box-shadow: 4px 6px 20px 0 rgba(49,86,126,0.08);
+}
+.lineLeft{
+    border-left: 1px solid $lightGrey;
+    border-radius: unset;
+}
+.logo{
+    margin-left: 10px;
+    margin-top: 6px;
+    img {
+        width: 130px;
+    }
+}
+.emptyPage{
+    width: 100vw;
+    height: calc(100vh - 100px);
+    background-image: url('/assets/background/adminMyProfile.png');
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

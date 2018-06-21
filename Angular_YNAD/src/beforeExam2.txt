@@ -1,0 +1,47 @@
+I GOT IN MY FIRST EXAM:
+- Web Servece
+- Optimacation
+- Deepfreze
+
+In crud.service.ts:
+    //WHAT IS Observable<any> DO?
+    //WHY DO WE PUT THE SUBSCRIBE HERE BUT NOT IN THE GET?
+    //WHAT DOES THE SUBSCRIBE DO?
+
+In allUsers.component.ts
+    //wHAT DOES THE OnInit DO?
+    //WHAT  DOES THE SUBSCRIPE DO?
+    //IN WHAT ORDER DOES IT PRIENT OUT?
+
+Optimacation
+    How would we optimice our code and what would we do / how would we do it?
+
+Lazy Load
+    //How does the lazyload work, know that it is put in the routing and in the app.module
+    //Implement Lazy Loading.
+
+Deepfreze
+    //Make deepfreze that works
+    //Implement DeepFreeze.
+
+
+
+ANNE MAI GOT THIS:
+End2End
+    //Make more E2E tests
+    //Test where somthing is put in the input, and more.
+
+Unit test
+    //Make more Unit tests
+    //Learn how to create new unit test if we get asked to live code.
+    //Test input properly, count how many users are displayed, put value into input, count how many there are after. 
+    //Learn how to pass values in the unit test
+
+REDUX
+    //Look more into redux, 
+    //Maybe implement it somewhere else,
+        //Maybe on users.
+
+
+
+COMMENT EVERYTHING - Create copy of code.

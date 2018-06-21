@@ -1,0 +1,69 @@
+<div class="forms overlay" id="signUp">
+  <div class="signUp" id="formSignUp">
+    <div class="formSignUp__header">
+      <a routerLink="/" class="formSignUp__header__close btnNone">close</a>
+      <div class="formSignUp__header__logo"></div>
+      <h2>Sign up to Young Nordic Artists & Designers</h2>
+    </div>
+    <form class="signUpForm" [formGroup]="signUpForm" (submit)="signUpSubmit(signUpForm)" novalidate>
+      <div class="signUpTwoInLine">
+        <mat-form-field class="seperated">
+          <input class="h5" matInput placeholder="Enter Firstname" autocomplete="name" formControlName="firstname">
+        </mat-form-field>
+        <mat-form-field class="seperated">
+          <input class="h5" matInput placeholder="Enter Lastname" autocomplete="name" formControlName="lastname">
+        </mat-form-field>
+      </div>
+
+      <mat-form-field>
+        <input class="h5" matInput placeholder="Enter email" autocomplete="email" email formControlName="email">
+      </mat-form-field>
+      <div *ngIf="signUpForm.controls.email.invalid && signUpForm.controls.email.touched">
+        You must fill out a valid email
+      </div>
+                    
+      <mat-form-field>
+        <input class="h5" matInput placeholder="Enter Password" autocomplete="new-password" formControlName="password">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input class="h5" matInput placeholder="Enter Phone Number" autocomplete="tel" formControlName="phone_number">
+      </mat-form-field>
+    
+      <mat-form-field>
+        <input class="h5" matInput placeholder="Enter Profession" formControlName="profession">
+      </mat-form-field>
+
+      <mat-form-field>
+        <textarea class="h5" matInput id="" cols="30" rows="10" placeholder="Tell a little about yourself" autocomplete="" formControlName="description"></textarea>
+      </mat-form-field>
+         
+      <mat-form-field>
+        <input class="h5" matInput placeholder="Enter instagram url" formControlName="instagram_url">
+      </mat-form-field>
+        
+      <mat-form-field>
+        <input class="h5" matInput placeholder="Enter facebook url" formControlName="facebook_url">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input class="h5" matInput placeholder="Enter twitter url" formControlName="twitter_url">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input class="h5" matInput placeholder="Enter profile image url" formControlName="profile_image">
+      </mat-form-field>
+            
+      <input class="custom-file-inputSignUp" type='file' (change)="readUrl($event)"> 
+      <img class="user_image_upload" [src]="profileImageUrl" alt="your image">
+      
+      <!--    
+      <p>Form value: {{ signUpForm.value | json }}</p>
+      <p>Form status: {{ signUpForm.status | json }}</p>
+      -->
+
+      <button class="btnDark" type="submit" >Sign Up</button>
+    </form>
+  </div>
+</div>
+  

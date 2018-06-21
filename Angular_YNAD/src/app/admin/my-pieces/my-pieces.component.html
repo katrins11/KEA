@@ -1,0 +1,83 @@
+<section class="my-pieces-table">
+        <div class="piece-search">
+            <h2>Search through your pieces</h2>
+            <input id="myPieceSearchInput" type="text" placeholder="Search for piece" >
+        </div>
+    <div class="pieces-table">
+        <table>
+            <tr>
+                <th>
+                    <h5>Piece Image</h5>
+                </th>
+                <th>
+                    <h5>Title</h5>
+                </th>
+                <th>
+                    <h5>Description</h5>
+                </th>
+                <th>
+                    <h5>Media</h5>
+                </th>
+                <th>
+                    <h5>Marterial</h5>
+                </th>
+                <th>
+                    <h5>Year</h5>
+                </th>
+                <th>
+                    <h5>Size</h5>
+                </th>
+                <th>
+                    <h5>Price</h5>
+                </th>
+                <th>
+                    <h5>Status</h5>
+                </th>
+                <th>
+                    <h5>Delete</h5>
+                </th>
+            </tr>
+            <tr  *ngFor="let piece of pieces">
+                <td>
+                    <div class="piece-thumbnail">
+                        <img src="{{piece.piece_image}}">
+                    </div>
+                </td>
+                <td>
+                    <p>{{piece.title}}</p>
+                </td>
+                <td>
+                    <p>{{piece.description}}</p>
+                </td>
+                <td>
+                    <p>Film</p>
+                </td>
+                <td>
+                    <p>{{piece.material}}</p>
+                </td>
+                <td>
+                    <p>2016</p>
+                </td>
+                <td>
+                    <p>{{piece.size}}</p>
+                </td>
+                <td>
+                    <p>{{piece.price}}</p>
+                </td>
+                <td>
+                    <div class="pieces-status">
+                        <p>Pending</p>
+                        <div class="status pending"></div>
+                    </div>
+                </td>
+                <td>
+                    <app-delete-piece-modal [data]="piece"></app-delete-piece-modal>
+                    <!-- <app-delete-piece-modal (getData)= "saveData($event)" [data]="piece"></app-delete-piece-modal> -->
+                </td>
+            </tr>
+          
+        </table>
+    </div>
+
+
+  </section>
