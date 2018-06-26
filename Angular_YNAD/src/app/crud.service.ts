@@ -19,6 +19,7 @@ export class CrudService {
       piece: []
     };
   }
+  
   displayAllPieces(): Observable<any> {
     return this.http.get('http://localhost:1983/pieces-api', { responseType: 'json' } );
   } 

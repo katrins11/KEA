@@ -45,3 +45,17 @@ REDUX
 
 
 COMMENT EVERYTHING - Create copy of code.
+
+//BIRNA
+REDUX
+    //Line 19 in the epic, where is it getting the info? What does each word mean?
+    //Go through the redux and  the unit test for the reducer.    
+
+UNIT TEST ON REDUCER ON Deepfreze
+    //What is the difference exactly with the tassign and deepfreeze? 
+    
+E2E
+
+PERFORMANCE
+    //How would you do the lazyload.
+    //In performance how can you optimise the javascript? (Not -aot -prod - lazyload)

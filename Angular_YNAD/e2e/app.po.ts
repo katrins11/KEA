@@ -8,6 +8,12 @@ export class AppPage {
   navigateToAdmin(){
     return browser.get('/admin');
   }
+  navigateToSignIn(){
+    return browser.get('/log-in');
+  }
+  navigateToPieces(){
+    return browser.get('/pieces');
+  }
 
   getHomeParagraphText() {
     return element(by.css('app-root app-home h1')).getText();

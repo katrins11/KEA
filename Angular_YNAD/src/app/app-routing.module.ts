@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LogInComponent } from './log-in/log-in.component';
 import { AboutComponent } from './about/about.component';
-import { PiecesComponent } from './pieces/pieces.component';
+// import { PiecesComponent } from './pieces/pieces.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { CreativesComponent } from './creatives/creatives.component';
 import { AdminComponent } from './admin/admin.component';
@@ -18,7 +18,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'pieces', component: PiecesComponent },
+  { path: 'lazy', loadChildren: './lazy.module#LazyModule' },
+  // { path: 'pieces', component: PiecesComponent },
   { path: 'creatives', component: CreativesComponent },
   { path: 'about', component: AboutComponent },
   { path: 'log-in', component: LogInComponent},
