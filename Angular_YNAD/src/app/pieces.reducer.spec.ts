@@ -1,5 +1,8 @@
 var deepFreeze = require('deep-freeze');
 import { PiecesActions } from './pieces.actions';
+import { piecesReducer } from './pieces.reducer';
+import { CrudService } from './crud.service';
+import * as types from './pieces.actions';
 
 describe('App: pieces reducer', () => {
     beforeEach(() => {
@@ -18,6 +21,44 @@ describe('App: pieces reducer', () => {
             expect(this.pieces).toEqual(this.pieces);
         });
     });
+    
+    describe('delete piece reducer', () => {
+        it('should return the initial state', () => {
+          expect(piecesReducer( undefined, {})).toEqual(CrudService.getInitialPieceState());
+        });
+        it('should delete a piece from the pieces array', () => {
+          let piecesArrayInitial = [{
+            idpieces: 1,
+            title: 'Piece Title 1',
+            material: 'painting'
+          },
+          {
+            idpieces: 2,
+            title: 'Piece Title 2',
+            material: 'video'
+          },
+          {
+            idpieces: 3,
+            title: 'Piece Title 3',
+            material: 'mixed media'
+          }
+          ];
+          const initialState = CrudService.getInitialPieceState();
+          initialState.piece = [... piecesArrayInitial];
+          
+          deepFreeze(initialState);
+          var afterState = CrudService.getInitialPieceState();
+          afterState = { ... initialState};
+        
+          const newState = piecesReducer(initialState, {
+            type: types.PiecesActions.DELETE_PIECES,
+            payload: 2
+          });
+          console.log('newState: ', newState.piece);
+      
+          expect(newState.piece.length).toBe(2);
+        });
+      });
 });
 
 ///to do a unit test just make the command in the teminal: ng test

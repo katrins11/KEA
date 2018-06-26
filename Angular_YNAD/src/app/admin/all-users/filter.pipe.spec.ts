@@ -5,13 +5,7 @@ import { FilterArrayPipe } from './filter.pipe';
 describe('App: Users', () => {
   beforeEach(() => {
       // creating list of users
-    this.users = [
-        // {_id: '1', firstname: 'Katrin'},
-        // {_id: '2', firstname: 'Birna'},
-        // {_id: '3', firstname: 'Anne'},
-        // {_id: '4', firstname: 'Jon'},
-        // {_id: '5', firstname: 'Christian'},
-    ];
+    this.users = [];
     // declaring filter array pipe
     TestBed.configureTestingModule({
       declarations: [

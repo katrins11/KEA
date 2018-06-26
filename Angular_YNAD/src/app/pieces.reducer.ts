@@ -25,10 +25,13 @@ export function piecesReducer(state: UsersState = INITIAL_STATE, action: any) {
 
     //for deleting one piece
     case PiecesActions.DELETE_PIECES:
-      return state;
+      //return state;
+      let newDeletedState = [... state.piece];
+      newDeletedState = newDeletedState.filter(x => x.idpieces !== action.payload);
+      return tassign(state, {piece: newDeletedState});
     case PiecesActions.DELETE_PIECES_SUCCESS:
       // console.log(action.payload);
-      let newDeletedState = [... state.piece];
+      //let newDeletedState = [... state.piece];
       newDeletedState = newDeletedState.filter(x => x.idpieces !== action.payload);
       // newDeletedState.filter(x =>{
       //   if (x.idpieces !== action.payload) {
