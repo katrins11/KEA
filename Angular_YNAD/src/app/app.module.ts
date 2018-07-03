@@ -18,8 +18,6 @@ import { AppComponent } from './app.component';
 //Pages
 import { LogInComponent } from './log-in/log-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { CreativesComponent } from './creatives/creatives.component';
-// import { PiecesComponent } from './pieces/pieces.component';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
@@ -61,12 +59,12 @@ import { RouterModule } from '@angular/router';
 import { PiecessEpic } from './pieces.epic';
 import { combineEpics, createEpicMiddleware } from 'redux-observable';
 import { createLogger } from 'redux-logger';
+import { CreativesComponent } from './creatives/creatives.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    // PiecesComponent,
     CreativesComponent,
     AboutComponent,
     LogInComponent,

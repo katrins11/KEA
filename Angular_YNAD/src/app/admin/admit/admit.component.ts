@@ -28,11 +28,14 @@ export class AdmitComponent implements OnInit {
    admitPieceSubmit(admitPieceForm) {
     if (admitPieceForm.valid) {
       //Save piece data via crudService      
-      this.crudService.saveNewPiece(admitPieceForm.value)
-      this.authService.login().subscribe(x => {
-        // Navigate to the my-pieces
-        this.router.navigate(['./admin/my-pieces']);
-      });
+      this.crudService.saveNewPiece(admitPieceForm.value);
+      // this.authService.login().subscribe(x => {
+      //   // Navigate to the my-pieces
+        
+      // });
+      // this.authService.login();
+      // this.router.navigate(['./admin/my-pieces']);
+      
       // console.log(this.admitPieceForm.value);
     } else {
       // Display error message

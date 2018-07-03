@@ -9,6 +9,8 @@ import { CrudService } from '../../crud.service';
 
 @Injectable()
 //wHAT DOES THE OnInit DO?
+//Lifecycle hook that is called after data-bound properties of a directive are initialized
+//It'S A Lifecycle hook that runs on load
 export class AllUsersComponent implements OnInit {
   users = [];
 
@@ -16,7 +18,7 @@ export class AllUsersComponent implements OnInit {
 
   ngOnInit() {
     //WHAT  DOES THE SUBSCRIPE DO?
-    //IN WHAT ORDER DOES IT PRIENT OUT?
+    //IN WHAT ORDER DOES IT PRIENT OUT? hi - hi1 - data()
     console.log('hi');
     this.crudService.displayAllUsers().subscribe(data => {
       this.users = data;

@@ -8,10 +8,10 @@ const routes: Routes = [
 ];
 
 @NgModule({
+  declarations: [PiecesComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes)
-  ],
-  declarations: [PiecesComponent]
+  ]
 })
 export class LazyModule { }

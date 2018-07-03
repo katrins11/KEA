@@ -19,12 +19,14 @@ export class CrudService {
       piece: []
     };
   }
-  
+
   displayAllPieces(): Observable<any> {
     return this.http.get('http://localhost:1983/pieces-api', { responseType: 'json' } );
   } 
 
   //WHAT IS Observable<any> DO?
+  //To make sure that the Reducer is a pure function we use DeepFreze
+
   displayAllUsers(): Observable<any> {
     return this.http.get('http://localhost:1983/user-api', { responseType: 'json' } );
   } 
